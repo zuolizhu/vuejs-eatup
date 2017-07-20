@@ -31,7 +31,7 @@
       </v-toolbar-items>
     </v-toolbar>
     <main>
-
+      <router-view></router-view>
     </main>
   </v-app>
 </template>
@@ -60,7 +60,7 @@
           },
           {
             icon: 'lock_open',
-            title: 'Sign in'
+            title: 'Log in'
           }
         ]
       }
