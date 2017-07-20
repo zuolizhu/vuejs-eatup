@@ -1,11 +1,29 @@
 <template>
   <v-app light>
-    <v-toolbar>
+    <v-navigation-drawer v-model="sideNav">
+      <v-list>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>restaurant</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            View Restaurant
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-toolbar class="primary">
+      <v-toolbar-side-icon 
+      @click.native.stop="sideNav =! sideNav" 
+      class="hidden-sm-and-up"></v-toolbar-side-icon>
       <v-toolbar-title>
         What to eat tonight
       </v-toolbar-title>
+      
       <v-spacer></v-spacer>
-      <v-toolbar-items>
+
+      <v-toolbar-items class="hidden-xs-only">
         <v-btn flat>
           <v-icon left>restaurant</v-icon>
           View Menu
@@ -22,6 +40,7 @@
   export default {
     data () {
       return {
+        sideNav: false
       }
     }
   }
