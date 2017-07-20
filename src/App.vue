@@ -2,12 +2,12 @@
   <v-app light>
     <v-navigation-drawer v-model="sideNav">
       <v-list>
-        <v-list-tile>
+        <v-list-tile v-for="item in menuItems" :key="item.title">
           <v-list-tile-action>
-            <v-icon>restaurant</v-icon>
+            <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            View Restaurant
+            {{ item.title }}
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -24,9 +24,9 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat>
-          <v-icon left>restaurant</v-icon>
-          View Menu
+        <v-btn flat v-for="item in menuItems" :key="item.title">
+          <v-icon left>{{ item.icon }}</v-icon>
+          {{ item.title }}
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -40,7 +40,29 @@
   export default {
     data () {
       return {
-        sideNav: false
+        sideNav: false,
+        menuItems: [
+          {
+            icon: 'restaurant',
+            title: 'Restaurant'
+          },
+          {
+            icon: 'location_on',
+            title: 'Location'
+          },
+          {
+            icon: 'person',
+            title: 'Profile'
+          },
+          {
+            icon: 'face',
+            title: 'Sign up'
+          },
+          {
+            icon: 'lock_open',
+            title: 'Sign in'
+          }
+        ]
       }
     }
   }
