@@ -6,6 +6,7 @@ import CreateEatup from '@/components/Eatup/CreateEatup'
 import Profile from '@/components/User/Profile'
 import Signup from '@/components/User/Signup'
 import Login from '@/components/User/Login'
+import Eatup from '@/components/Eatup/Eatup'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/eatup/new',
       name: 'CreateEatup',
       component: CreateEatup
+    },
+    {
+      path: '/eatups/:id',
+      name: 'Eatup',
+      component: Eatup
     },
     {
       path: '/profile',

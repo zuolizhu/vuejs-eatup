@@ -13,7 +13,8 @@
         <v-carousel>
           <v-carousel-item v-for="eatup in eatups" 
           :src="eatup.imageURL" 
-          :key="eatup.id">
+          :key="eatup.id"
+          @click="onLoadEatup(eatup.id)">
           <div class="title">
             {{ eatup.title }}
           </div>
@@ -43,6 +44,11 @@ export default {
           id: 'asgwerqefsa321',
           title: 'Eatup in New York' }
       ]
+    }
+  },
+  methods: {
+    onLoadEatup (id) {
+      this.$router.push('/eatup/' + id)
     }
   }
 }
