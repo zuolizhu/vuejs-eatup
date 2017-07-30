@@ -34,16 +34,9 @@
 
 <script>
 export default {
-  data () {
-    return {
-      eatups: [
-        { imageURL: 'https://cdn.wallpaper.com/main/styles/wp_large/s3/02_mona.jpg',
-          id: 'zxcvbww123',
-          title: 'Eatup in Albany' },
-        { imageURL: 'https://wallpaperscraft.com/image/meat_sauce_restaurant_hot_43741_1920x1080.jpg',
-          id: 'asgwerqefsa321',
-          title: 'Eatup in New York' }
-      ]
+  computed: {
+    eatups () {
+      return this.$store.getters.featuredEatups
     }
   },
   methods: {
