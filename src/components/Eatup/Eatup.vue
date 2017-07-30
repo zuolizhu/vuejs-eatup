@@ -4,14 +4,14 @@
         <v-flex xs12>
             <v-card>
                 <v-card-title>
-                    <h6 class="primary--text">My Eatup</h6>
+                    <h6 class="primary--text">{{eatup.title}}</h6>
                 </v-card-title>
                 <v-card-media
-                      src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d9/TGI_Fridays_logo.svg/1280px-TGI_Fridays_logo.svg.png"
+                      :src="eatup.imageURL"
                       height="300px"
                     ></v-card-media>
                     <v-card-text>
-                        <div class="info--text">24th July 2017 - Crossgates</div>
+                        <div class="info--text">{{eatup.date}} - Crossgates</div>
                         <div>Text goes here</div>
                     </v-card-text>
                     <v-card-action>
@@ -23,3 +23,14 @@
       </v-layout>
   </v-container>
 </template>
+
+<script>
+export default {
+  props: ['id'],
+  computed: {
+    eatup () {
+      return this.$store.getters.loadedEatup(this.id)
+    }
+  }
+}
+</script>

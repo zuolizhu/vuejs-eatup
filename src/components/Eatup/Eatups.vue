@@ -19,7 +19,7 @@
                   </div>
               </v-card-title>
               <v-card-actions>
-                <v-btn to="/eatups/1">
+                <v-btn :to="'/eatups/' + eatup.id">
                   <v-icon left light>arrow_forward</v-icon> View Menu</v-btn>
               </v-card-actions>
               </v-flex>

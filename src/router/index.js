@@ -30,6 +30,7 @@ export default new Router({
     {
       path: '/eatups/:id',
       name: 'Eatup',
+      props: true,
       component: Eatup
     },
     {
