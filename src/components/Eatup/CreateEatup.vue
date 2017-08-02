@@ -60,7 +60,7 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-btn class="primary">
+              <v-btn class="primary" :disabled="!formIsValid">
                 Create Eatup
               </v-btn>
             </v-flex>
@@ -79,6 +79,11 @@ export default {
       location: '',
       imageURL: '',
       description: ''
+    }
+  },
+  computed: {
+    formIsValid () {
+      return this.title !== '' && this.location !== '' && this.imageURL !== '' && this.description !== ''
     }
   }
 }
