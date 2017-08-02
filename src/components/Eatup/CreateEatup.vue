@@ -43,7 +43,7 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <img :src="imageURL">
+              <img :src="imageURL" height="175">
             </v-flex>
           </v-layout>
           <v-layout row>
