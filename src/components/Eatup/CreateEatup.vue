@@ -91,6 +91,9 @@ export default {
   },
   methods: {
     onCreateEatup () {
+      if (!this.formIsValid) {
+        return
+      }
       const eatupData = {
         title: this.title,
         location: this.location,
@@ -99,6 +102,7 @@ export default {
         date: new Date()
       }
       this.$store.dispatch('createEatup', eatupData)
+      this.$router.push('/eatups')
     }
   }
 }
