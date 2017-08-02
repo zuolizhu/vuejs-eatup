@@ -7,7 +7,7 @@
     </v-layout>
     <v-layout row>
       <v-flex xs12>
-        <form>
+        <form @submit.prevent="onCreateEatup">
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-text-field 
@@ -60,7 +60,10 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-btn class="primary" :disabled="!formIsValid">
+              <v-btn 
+              class="primary" 
+              :disabled="!formIsValid" 
+              type="submit">
                 Create Eatup
               </v-btn>
             </v-flex>
@@ -84,6 +87,18 @@ export default {
   computed: {
     formIsValid () {
       return this.title !== '' && this.location !== '' && this.imageURL !== '' && this.description !== ''
+    }
+  },
+  methods: {
+    onCreateEatup () {
+      const eatupData = {
+        title: this.title,
+        location: this.location,
+        imageURL: this.imageURL,
+        description: this.description,
+        date: new Date()
+      }
+      this.$store.dispatch('createEatup', eatupData)
     }
   }
 }

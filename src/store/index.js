@@ -31,7 +31,8 @@ export const store = new Vuex.Store({
         title: payload.title,
         location: payload.location,
         imageURL: payload.imageURL,
-        description: payload.description
+        description: payload.description,
+        date: payload.date
       }
       // Reach out to firebase and store it
       commit('createEatup', eatup)
