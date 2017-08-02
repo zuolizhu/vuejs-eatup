@@ -20,8 +20,23 @@ export const store = new Vuex.Store({
       registeredEatups: ['aaaaaddd1233123']
     }
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    createEatup (state, payload) {
+      state.loadedEatups.push(payload)
+    }
+  },
+  actions: {
+    createEatup ({commit}, payload) {
+      const eatup = {
+        title: payload.title,
+        location: payload.location,
+        imageURL: payload.imageURL,
+        description: payload.description
+      }
+      // Reach out to firebase and store it
+      commit('createEatup', eatup)
+    }
+  },
   getters: {
     loadedEatups (state) {
       return state.loadedEatups.sort((eatupA, eatupB) => {
