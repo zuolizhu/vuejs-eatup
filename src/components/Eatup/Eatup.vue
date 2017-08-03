@@ -11,8 +11,8 @@
                       height="300px"
                     ></v-card-media>
                     <v-card-text>
-                        <div class="info--text">{{eatup.date}} - Crossgates</div>
-                        <div>Text goes here</div>
+                        <div class="info--text">{{eatup.date}} - {{eatup.location}}</div>
+                        <div>{{eatup.description}}</div>
                     </v-card-text>
                     <v-card-action>
                         <v-spacer></v-spacer>

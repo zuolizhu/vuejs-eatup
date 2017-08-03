@@ -9,10 +9,14 @@ export const store = new Vuex.Store({
       { imageURL: 'https://cdn.wallpaper.com/main/styles/wp_large/s3/02_mona.jpg',
         id: 'zxcvbww123',
         title: 'Eatup in Albany',
+        location: 'Albany',
+        description: 'Enjoy Albany Food!',
         date: '2017-07-30'},
       { imageURL: 'https://wallpaperscraft.com/image/meat_sauce_restaurant_hot_43741_1920x1080.jpg',
         id: 'asgwerqefsa321',
         title: 'Eatup in New York',
+        location: 'NYC',
+        description: 'Splash Money in NYC!',
         date: '2017-07-29' }
     ],
     user: {
