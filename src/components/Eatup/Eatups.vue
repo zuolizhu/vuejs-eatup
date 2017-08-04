@@ -15,7 +15,7 @@
                 <v-card-title primary-title>
                   <div>
                     <div class="white mb-0">{{eatup.title}}</div>
-                    <div>{{eatup.date}}</div>
+                    <div>{{eatup.date | date}}</div>
                   </div>
               </v-card-title>
               <v-card-actions>

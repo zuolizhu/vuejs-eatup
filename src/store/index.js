@@ -11,13 +11,13 @@ export const store = new Vuex.Store({
         title: 'Eatup in Albany',
         location: 'Albany',
         description: 'Enjoy Albany Food!',
-        date: '2017-07-30'},
+        date: new Date()},
       { imageURL: 'https://wallpaperscraft.com/image/meat_sauce_restaurant_hot_43741_1920x1080.jpg',
         id: 'asgwerqefsa321',
         title: 'Eatup in New York',
         location: 'NYC',
         description: 'Splash Money in NYC!',
-        date: '2017-07-29' }
+        date: new Date() }
     ],
     user: {
       id: 'qwertasdf123',

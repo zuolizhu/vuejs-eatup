@@ -11,7 +11,7 @@
                       height="300px"
                     ></v-card-media>
                     <v-card-text>
-                        <div class="info--text">{{eatup.date}} - {{eatup.location}}</div>
+                        <div class="info--text">{{eatup.date | date}} - {{eatup.location}}</div>
                         <div>{{eatup.description}}</div>
                     </v-card-text>
                     <v-card-action>
