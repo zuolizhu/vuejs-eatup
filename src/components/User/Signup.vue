@@ -4,7 +4,7 @@
       <v-flex xs12 sm6 offset-sm3>
         <v-card-text>
           <v-container>
-            <form>
+            <form @submit.prevent="onSignup">
               <v-layout row>
                 <v-flex xs12>
                   <v-text-field 
@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     onSignup () {
-      console.log({email: this.email, password: this.password, confirmPassword: this.confirmPassword})
+      this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
     }
   }
 }
