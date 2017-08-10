@@ -47,34 +47,26 @@
   export default {
     data () {
       return {
-        sideNav: false,
-        menuItems: [
-          {
-            icon: 'restaurant',
-            title: 'Restaurant',
-            link: '/eatups'
-          },
-          {
-            icon: 'location_on',
-            title: 'New Eatup',
-            link: '/eatup/new'
-          },
-          {
-            icon: 'person',
-            title: 'Profile',
-            link: '/profile'
-          },
-          {
-            icon: 'face',
-            title: 'Sign up',
-            link: '/signup'
-          },
-          {
-            icon: 'lock_open',
-            title: 'Log in',
-            link: '/login'
-          }
+        sideNav: false
+      }
+    },
+    computed: {
+      menuItems () {
+        let menuItems = [
+          {icon: 'face', title: 'Sign up', link: '/signup'},
+          {icon: 'lock_open', title: 'Log in', link: '/login'}
         ]
+        if (this.authedUser) {
+          menuItems = [
+          {icon: 'restaurant', title: 'Restaurant', link: '/eatups'},
+          {icon: 'location_on', title: 'New Eatup', link: '/eatup/new'},
+          {icon: 'person', title: 'Profile', link: '/profile'}
+          ]
+        }
+        return menuItems
+      },
+      authedUser () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       }
     }
   }
