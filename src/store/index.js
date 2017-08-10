@@ -20,10 +20,7 @@ export const store = new Vuex.Store({
         description: 'Splash Money in NYC!',
         date: new Date() }
     ],
-    user: {
-      id: 'qwertasdf123',
-      registeredEatups: ['aaaaaddd1233123']
-    }
+    user: null
   },
   mutations: {
     createEatup (state, payload) {
@@ -77,6 +74,9 @@ export const store = new Vuex.Store({
           return eatup.id === eatupId
         })
       }
+    },
+    user (state) {
+      return state.user
     }
   }
 })
