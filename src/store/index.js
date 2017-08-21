@@ -48,10 +48,14 @@ export const store = new Vuex.Store({
         location: payload.location,
         imageURL: payload.imageURL,
         description: payload.description,
-        date: payload.date
+        date: payload.date.toISOString()
       }
-      // Reach out to firebase and store it
-      commit('createEatup', eatup)
+      firebase.database().ref('eatups').push(eatup).then((data) => {
+        console.log(data)
+        commit('createEatup', eatup)
+      }).catch((error) => {
+        console.log(error)
+      })
     },
     signUserUp ({commit}, payload) {
       commit('setLoading', true)
