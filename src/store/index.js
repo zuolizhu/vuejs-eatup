@@ -94,6 +94,9 @@ export const store = new Vuex.Store({
           console.log(error)
         }
       )
+    },
+    clearError ({commit}) {
+      commit('clearError')
     }
   },
   getters: {
