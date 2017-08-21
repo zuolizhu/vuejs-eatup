@@ -51,8 +51,11 @@ export const store = new Vuex.Store({
         date: payload.date.toISOString()
       }
       firebase.database().ref('eatups').push(eatup).then((data) => {
-        console.log(data)
-        commit('createEatup', eatup)
+        const key = data.key
+        commit('createEatup', {
+          ...eatup,
+          id: key
+        })
       }).catch((error) => {
         console.log(error)
       })

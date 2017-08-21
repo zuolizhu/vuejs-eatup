@@ -14,10 +14,10 @@
                         <div class="info--text">{{eatup.date | date}} - {{eatup.location}}</div>
                         <div>{{eatup.description}}</div>
                     </v-card-text>
-                    <v-card-action>
+                    <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn class="primary">Sign Up</v-btn>
-                    </v-card-action>
+                    </v-card-actions>
             </v-card>
         </v-flex>
       </v-layout>
