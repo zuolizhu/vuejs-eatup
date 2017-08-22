@@ -7,6 +7,7 @@ import Profile from '@/components/User/Profile'
 import Signup from '@/components/User/Signup'
 import Login from '@/components/User/Login'
 import Eatup from '@/components/Eatup/Eatup'
+import AuthGaurd from './auth-guard'
 
 Vue.use(Router)
 
@@ -25,7 +26,8 @@ export default new Router({
     {
       path: '/eatup/new',
       name: 'CreateEatup',
-      component: CreateEatup
+      component: CreateEatup,
+      beforeEnter: AuthGaurd
     },
     {
       path: '/eatups/:id',
@@ -36,7 +38,8 @@ export default new Router({
     {
       path: '/profile',
       name: 'Profile',
-      component: Profile
+      component: Profile,
+      beforeEnter: AuthGaurd
     },
     {
       path: '/signup',

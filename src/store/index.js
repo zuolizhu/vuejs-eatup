@@ -57,7 +57,8 @@ export const store = new Vuex.Store({
             title: obj[key].title,
             description: obj[key].description,
             imageURL: obj[key].imageURL,
-            date: obj[key].date
+            date: obj[key].date,
+            creatorId: obj[key].creatorId
           })
         }
         commit('setLoadedEatups', eatups)
@@ -70,13 +71,14 @@ export const store = new Vuex.Store({
         }
       )
     },
-    createEatup ({commit}, payload) {
+    createEatup ({commit, getters}, payload) {
       const eatup = {
         title: payload.title,
         location: payload.location,
         imageURL: payload.imageURL,
         description: payload.description,
-        date: payload.date.toISOString()
+        date: payload.date.toISOString(),
+        creatorId: getters.user.id
       }
       firebase.database().ref('eatups').push(eatup).then((data) => {
         const key = data.key
@@ -129,6 +131,13 @@ export const store = new Vuex.Store({
           console.log(error)
         }
       )
+    },
+    autoSignIn ({commit}, payload) {
+      commit('setUser', {id: payload.uid, registeredEatups: []})
+    },
+    logout ({commit}) {
+      firebase.auth().signOut()
+      commit('setUser', null)
     },
     clearError ({commit}) {
       commit('clearError')

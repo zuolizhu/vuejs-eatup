@@ -27,6 +27,11 @@ new Vue({
       projectId: 'eatup-c9d08',
       storageBucket: 'eatup-c9d08.appspot.com'
     })
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user)
+      }
+    })
     this.$store.dispatch('loadEatups')
   }
 })
