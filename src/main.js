@@ -27,5 +27,6 @@ new Vue({
       projectId: 'eatup-c9d08',
       storageBucket: 'eatup-c9d08.appspot.com'
     })
+    this.$store.dispatch('loadEatups')
   }
 })

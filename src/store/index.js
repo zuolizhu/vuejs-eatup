@@ -25,6 +25,9 @@ export const store = new Vuex.Store({
     error: null
   },
   mutations: {
+    setLoadedEatups (state, payload) {
+      state.loadedEatups = payload
+    },
     createEatup (state, payload) {
       state.loadedEatups.push(payload)
     },
@@ -42,6 +45,28 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
+    loadEatups ({commit}) {
+      firebase.database().ref('eatups').once('value')
+      .then((data) => {
+        const eatups = []
+        const obj = data.val()
+        for (let key in obj) {
+          eatups.push({
+            id: key,
+            title: obj[key].title,
+            description: obj[key].description,
+            imageURL: obj[key].imageURL,
+            date: obj[key].date
+          })
+        }
+        commit('setLoadedEatups', eatups)
+      })
+      .catch(
+        (error) => {
+          console.log(error)
+        }
+      )
+    },
     createEatup ({commit}, payload) {
       const eatup = {
         title: payload.title,
