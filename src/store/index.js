@@ -46,6 +46,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     loadEatups ({commit}) {
+      commit('setLoading', true)
       firebase.database().ref('eatups').once('value')
       .then((data) => {
         const eatups = []
@@ -60,10 +61,12 @@ export const store = new Vuex.Store({
           })
         }
         commit('setLoadedEatups', eatups)
+        commit('setLoading', false)
       })
       .catch(
         (error) => {
           console.log(error)
+          commit('setLoading', true)
         }
       )
     },
