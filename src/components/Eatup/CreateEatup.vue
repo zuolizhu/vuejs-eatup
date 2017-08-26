@@ -125,10 +125,13 @@ export default {
       if (!this.formIsValid) {
         return
       }
+      if (!this.image) {
+        return
+      }
       const eatupData = {
         title: this.title,
         location: this.location,
-        imageURL: this.imageURL,
+        image: this.image,
         description: this.description,
         date: this.submittableDateTime
       }

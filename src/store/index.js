@@ -75,15 +75,26 @@ export const store = new Vuex.Store({
       const eatup = {
         title: payload.title,
         location: payload.location,
-        imageURL: payload.imageURL,
         description: payload.description,
         date: payload.date.toISOString(),
         creatorId: getters.user.id
       }
+      let imageURL
+      let key
       firebase.database().ref('eatups').push(eatup).then((data) => {
-        const key = data.key
+        key = data.key
+        return key
+      }).then(key => {
+        const filename = payload.image.name
+        const extension = filename.slice(filename.lastIndexOf('.'))
+        return firebase.storage().ref('eatups/' + key + '.' + extension).put(payload.image)
+      }).then(imageInfo => {
+        imageURL = imageInfo.metadata.downloadURLs[0]
+        return firebase.database().ref('eatups').child(key).update({imageURL: imageURL})
+      }).then(() => {
         commit('createEatup', {
           ...eatup,
+          imageURL: imageURL,
           id: key
         })
       }).catch((error) => {

@@ -25,7 +25,7 @@ new Vue({
       authDomain: 'eatup-c9d08.firebaseapp.com',
       databaseURL: 'https://eatup-c9d08.firebaseio.com',
       projectId: 'eatup-c9d08',
-      storageBucket: 'eatup-c9d08.appspot.com'
+      storageBucket: 'gs://eatup-c9d08.appspot.com/'
     })
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
