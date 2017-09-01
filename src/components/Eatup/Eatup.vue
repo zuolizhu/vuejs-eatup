@@ -5,6 +5,12 @@
             <v-card>
                 <v-card-title>
                     <h6 class="primary--text">{{eatup.title}}</h6>
+                    <template v-if="true">
+                      <v-spacer>
+
+                      </v-spacer>
+                      <app-edit-eatup-details-dialog></app-edit-eatup-details-dialog>
+                    </template>
                 </v-card-title>
                 <v-card-media
                       :src="eatup.imageURL"
