@@ -5,7 +5,7 @@
             <v-card>
                 <v-card-title>
                     <h6 class="primary--text">{{eatup.title}}</h6>
-                    <template v-if="true">
+                    <template v-if="userIsCreator">
                       <v-spacer>
 
                       </v-spacer>
@@ -36,6 +36,15 @@ export default {
   computed: {
     eatup () {
       return this.$store.getters.loadedEatup(this.id)
+    },
+    userIsAuthed () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    },
+    userIsCreator () {
+      if (!this.userIsAuthed) {
+        return false
+      }
+      return this.$store.getters.user.id === this.eatup.creatorId
     }
   }
 }
