@@ -58,6 +58,7 @@ export const store = new Vuex.Store({
             description: obj[key].description,
             imageURL: obj[key].imageURL,
             date: obj[key].date,
+            location: obj[key].location,
             creatorId: obj[key].creatorId
           })
         }

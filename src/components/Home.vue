@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     onLoadEatup (id) {
-      this.$router.push('/eatup/' + id)
+      this.$router.push('/eatups/' + id)
     }
   }
 }

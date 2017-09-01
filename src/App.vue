@@ -70,7 +70,7 @@
         ]
         if (this.authedUser) {
           menuItems = [
-          {icon: 'restaurant', title: 'Restaurant', link: '/eatups'},
+          {icon: 'restaurant', title: 'Eating', link: '/eatups'},
           {icon: 'location_on', title: 'New Eatup', link: '/eatup/new'},
           {icon: 'person', title: 'Profile', link: '/profile'}
           ]
