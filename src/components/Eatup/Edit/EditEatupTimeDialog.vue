@@ -51,7 +51,6 @@ export default {
       const minutes = this.editableTime.match(/:(\d+)/)[1]
       newDate.setHours(hours)
       newDate.setMinutes(minutes)
-      
       this.$store.dispatch('updateEatupData', {
         id: this.eatup.id,
         date: newDate
