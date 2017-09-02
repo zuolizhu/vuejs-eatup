@@ -20,11 +20,11 @@
                                 <v-btn 
                                     class="blue--text darken-1" 
                                     flat 
-                                    @click.native="editDialog = false"></v-btn>
+                                    @click.native="editDialog = false">Cancel</v-btn>
                                 <v-btn 
                                     class="blue--text darken-1" 
                                     flat 
-                                    @click.native="onSaveChanges = false"></v-btn>
+                                    @click.native="onSaveChanges">Save</v-btn>
                             </template>
                         </v-date-picker>
                     </v-flex>
