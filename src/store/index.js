@@ -31,6 +31,20 @@ export const store = new Vuex.Store({
     createEatup (state, payload) {
       state.loadedEatups.push(payload)
     },
+    updateEatup (state, payload) {
+      const eatup = state.loadedEatups.find(eatup => {
+        return eatup.id === payload.id
+      })
+      if (payload.title) {
+        eatup.title = payload.title
+      }
+      if (payload.description) {
+        eatup.description = payload.description
+      }
+      if (payload.date) {
+        eatup.date = payload.date
+      }
+    },
     setUser (state, payload) {
       state.user = payload
     },
@@ -100,6 +114,28 @@ export const store = new Vuex.Store({
         })
       }).catch((error) => {
         console.log(error)
+      })
+    },
+    updateEatupData ({commit}, payload) {
+      commit('setLoading', true)
+      const updateObj = {}
+      if (payload.title) {
+        updateObj.title = payload.title
+      }
+      if (payload.description) {
+        updateObj.description = payload.description
+      }
+      if (payload.date) {
+        updateObj.date = payload.date
+      }
+      firebase.database().ref('eatups').child(payload.id).update(updateObj)
+      .then(() => {
+        commit('setLoading', false)
+        commit('updateEatup', payload)
+      })
+      .catch(error => {
+        console.log(error)
+        commit('setLoading', false)
       })
     },
     signUserUp ({commit}, payload) {
