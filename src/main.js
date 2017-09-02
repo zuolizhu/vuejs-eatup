@@ -7,6 +7,7 @@ import { store } from './store'
 import DateFilter from './filters/date'
 import AlertComponent from './components/Shared/Alert.vue'
 import EditEatupDetailsDialog from './components/Eatup/Edit/EditEatupDetailsDialog.vue'
+import EditEatupDateDialog from './components/Eatup/Edit/EditEatupDateDialog.vue'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
@@ -14,6 +15,7 @@ Vue.config.productionTip = false
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertComponent)
 Vue.component('app-edit-eatup-details-dialog', EditEatupDetailsDialog)
+Vue.component('app-edit-eatup-date-dialog', EditEatupDateDialog)
 
 /* eslint-disable no-new */
 new Vue({

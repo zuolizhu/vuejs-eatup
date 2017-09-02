@@ -27,6 +27,7 @@
                     ></v-card-media>
                     <v-card-text>
                         <div class="info--text">{{eatup.date | date}} - {{eatup.location}}</div>
+                        <div><app-edit-eatup-date-dialog :eatup="eatup" v-if="userIsCreator"></app-edit-eatup-date-dialog></div>
                         <div>{{eatup.description}}</div>
                     </v-card-text>
                     <v-card-actions>

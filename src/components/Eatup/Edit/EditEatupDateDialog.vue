@@ -38,18 +38,29 @@
 export default {
   props: ['eatup'],
   data () {
-      return {
-          editDialog: false,
-          editableDate: null
-      }
+    return {
+      editDialog: false,
+      editableDate: null
+    }
   },
   methods: {
-      onSaveChanges () {
-          
-      }
+    onSaveChanges () {
+      const newDate = new Date(this.eatup.date)
+
+      const newDay = new Date(this.editableDate).getUTCDate()
+      const newMonth = new Date(this.editableDate).getUTCMonth()
+      const newYear = new Date(this.editableDate).getUTCFullYear()
+      newDate.setUTCDate(newDay)
+      newDate.setUTCMonth(newMonth)
+      newDate.setUTCFullYear(newYear)
+      this.$store.dispatch('updateEatupData', {
+        id: this.eatup.id,
+        date: newDate
+      })
+    }
   },
   created () {
-      this.editableDate = new Date(this.eatup.date)
+    this.editableDate = new Date(this.eatup.date)
   }
 }
 </script>
