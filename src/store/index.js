@@ -239,8 +239,15 @@ export const store = new Vuex.Store({
       firebase.database().ref('/users/' + getters.user.id + '/registrations')
       .once('value')
       .then(data => {
-        const values = data.val()
-        console.log(values)
+        const dataPairs = data.val()
+        let joinedEatups = []
+        let swappedPairs = {}
+        for (let key in dataPairs) {
+          joinedEatups.push(dataPairs[key])
+          swappedPairs[dataPairs[key]] = key
+        }
+        console.log(joinedEatups)
+        console.log(swappedPairs)
       })
     },
     logout ({commit}) {
