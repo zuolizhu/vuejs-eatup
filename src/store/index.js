@@ -25,6 +25,19 @@ export const store = new Vuex.Store({
     error: null
   },
   mutations: {
+    signupUserForEatup (state, payload) {
+      const id = payload.id
+      if (state.user.registeredEatups.findIndex(eatup => eatup.id === id) >= 0) {
+        return
+      }
+      state.user.registeredEatups.push(id)
+      state.user.firebaseKeys[id] = payload.firebaseKey
+    },
+    unsignupUserForEatup (state, payload) {
+      const registeredEatups = state.user.registeredEatups
+      registeredEatups.splice(registeredEatups.findIndex(eatup => eatup.id === payload), 1)
+      Reflect.deleteProperty(state.user.firebaseKeys, payload)
+    },
     setLoadedEatups (state, payload) {
       state.loadedEatups = payload
     },
@@ -59,6 +72,24 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
+    signupUserForEatup ({commit, getters}, payload) {
+      commit('setLoading', true)
+      const user = getters.user
+      firebase.database().ref('/users/' + user.id).child('/registration/')
+      .push(payload)
+      .then(data => {
+        commit('setLoading', false)
+        commit('signupUserForEatup', {id: payload, firebaseKey: data.key})
+      })
+      .catch(error => {
+        console.log(error)
+        commit('setLoading', false)
+      })
+    },
+    unsignupUserForEatup ({commit, getters}, payload) {
+      commit('setLoading', true)
+      const user = getters.user
+    },
     loadEatups ({commit}) {
       commit('setLoading', true)
       firebase.database().ref('eatups').once('value')

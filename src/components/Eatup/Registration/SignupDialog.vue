@@ -1,6 +1,6 @@
 <template>
     <v-dialog persistent v-model="signupDialog">
-        <v-btn accent slot="activator">
+        <v-btn primary accent slot="activator">
             {{ userIsSignedup ? 'Unsignedup' : 'Signedup' }}
         </v-btn>
         <v-card>
@@ -54,7 +54,6 @@ export default {
   },
   methods: {
     onAgree () {
-
     }
   }
 }
