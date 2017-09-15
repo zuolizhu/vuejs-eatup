@@ -1,7 +1,7 @@
 <template>
     <v-dialog persistent v-model="signupDialog">
         <v-btn primary accent slot="activator">
-            {{ userIsSignedup ? 'Unsignedup' : 'Signedup' }}
+            {{ userIsSignedup ? 'Quit:(' : 'Join!' }}
         </v-btn>
         <v-card>
             <v-container>
@@ -54,6 +54,11 @@ export default {
   },
   methods: {
     onAgree () {
+      if (this.userIsSignedup) {
+        this.$store.dispatch('unsignupUserForEatup', this.eatupId)
+      } else {
+        this.$store.dispatch('signupUserForEatup', this.eatupId)
+      }
     }
   }
 }
