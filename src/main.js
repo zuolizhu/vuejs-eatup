@@ -9,7 +9,7 @@ import AlertComponent from './components/Shared/Alert.vue'
 import EditEatupDetailsDialog from './components/Eatup/Edit/EditEatupDetailsDialog.vue'
 import EditEatupDateDialog from './components/Eatup/Edit/EditEatupDateDialog.vue'
 import EditEatupTimeDialog from './components/Eatup/Edit/EditEatupTimeDialog.vue'
-
+import SignupDialog from './components/Eatup/Registration/SignupDialog.vue'
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 
@@ -18,6 +18,7 @@ Vue.component('app-alert', AlertComponent)
 Vue.component('app-edit-eatup-details-dialog', EditEatupDetailsDialog)
 Vue.component('app-edit-eatup-date-dialog', EditEatupDateDialog)
 Vue.component('app-edit-eatup-time-dialog', EditEatupTimeDialog)
+Vue.component('app-eatup-signup-dialog', SignupDialog)
 
 /* eslint-disable no-new */
 new Vue({
