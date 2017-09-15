@@ -35,7 +35,8 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn class="primary">Sign Up</v-btn>
+                        <app-eatup-signup-dialog 
+                        :eatupId="eatup.id">Sign Up</app-eatup-signup-dialog>
                     </v-card-actions>
             </v-card>
         </v-flex>

@@ -39,13 +39,23 @@
 
 <script>
 export default {
-    props: ['eatupId'],
-    computed: {
-        userIsSignedup () {
-            return this.$store.getters.user.registeredEatups.findIndex(eatupId => {
-                return eatupId === this.eatupId
-            }) >= 0
-        }
+  props: ['eatupId'],
+  data () {
+    return {
+      signupDialog: false
     }
+  },
+  computed: {
+    userIsSignedup () {
+      return this.$store.getters.user.registeredEatups.findIndex(eatupId => {
+        return eatupId === this.eatupId
+      }) >= 0
+    }
+  },
+  methods: {
+    onAgree () {
+
+    }
+  }
 }
 </script>
