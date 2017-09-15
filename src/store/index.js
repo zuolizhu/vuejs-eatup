@@ -75,7 +75,7 @@ export const store = new Vuex.Store({
     signupUserForEatup ({commit, getters}, payload) {
       commit('setLoading', true)
       const user = getters.user
-      firebase.database().ref('/users/' + user.id).child('/registration/')
+      firebase.database().ref('/users/' + user.id).child('/registrations/')
       .push(payload)
       .then(data => {
         commit('setLoading', false)
@@ -93,7 +93,7 @@ export const store = new Vuex.Store({
         return
       }
       const firebaseKey = user.firebaseKeys[payload]
-      firebase.database().ref('/users/' + user.id + '/registration/').child(firebaseKey)
+      firebase.database().ref('/users/' + user.id + '/registrations/').child(firebaseKey)
       .remove()
       .then(() => {
         commit('setLoading', false)
@@ -227,11 +227,20 @@ export const store = new Vuex.Store({
         }
       )
     },
-    autoSignIn ({commit}, payload) {
+    autoLogin ({commit}, payload) {
       commit('setUser', {
         id: payload.uid,
         registeredEatups: [],
         firebaseKeys: {}
+      })
+    },
+    fetchUserData ({commit, getters}) {
+      commit('setLoading', true)
+      firebase.database().ref('/users/' + getters.user.id + '/registrations')
+      .once('value')
+      .then(data => {
+        const values = data.val()
+        console.log(values)
       })
     },
     logout ({commit}) {

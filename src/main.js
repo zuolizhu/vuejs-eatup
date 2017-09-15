@@ -36,7 +36,8 @@ new Vue({
     })
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.$store.dispatch('autoSignIn', user)
+        this.$store.dispatch('autoLogin', user)
+        this.$store.dispatch('fetchUserData')
       }
     })
     this.$store.dispatch('loadEatups')
